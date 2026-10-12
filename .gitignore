@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Secrets
+.env
+
+# Tools
+.pytest_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store

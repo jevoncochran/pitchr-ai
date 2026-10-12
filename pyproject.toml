@@ -1,0 +1,18 @@
+[project]
+name = "pitchr-ai"
+version = "0.1.0"
+description = "AI service for PitchR CRM"
+readme = "README.md"
+authors = [
+    { name = "Jevon Cochran", email = "jevon.cochran@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.143.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.0",
+]
+
