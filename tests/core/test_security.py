@@ -1,7 +1,7 @@
 """Tests for the shared-secret check that protects every route."""
 
+from app.core.security import PUBLIC_PATHS
 from app.main import app
-from app.security import PUBLIC_PATHS
 
 SNAPSHOT_BODY = {
     "today": "2026-10-13",

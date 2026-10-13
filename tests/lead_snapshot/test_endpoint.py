@@ -2,9 +2,9 @@
 
 import pytest
 
-import app.services.lead_snapshot as lead_snapshot_service
-from app.schemas.lead_snapshot import SnapshotAnalysis
-from app.services.claude import ClaudeError
+import app.features.lead_snapshot.service as lead_snapshot_service
+from app.core.claude import ClaudeError
+from app.features.lead_snapshot.schemas import SnapshotAnalysis
 
 VALID_BODY = {
     "today": "2026-10-13",

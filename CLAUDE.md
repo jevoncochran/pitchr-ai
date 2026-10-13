@@ -1,6 +1,6 @@
 # pitchr-ai
 
-AI service for the Pitchr CRM. Python, FastAPI, Claude API. Managed with uv; app code lives in `app/`. Sibling repos: `../pitchr-client` (React) and `../pitchr-server` (NestJS).
+AI service for the Pitchr CRM. Python, FastAPI, Claude API. Managed with uv. Organized by feature: shared code in `app/core/` (config, security, the Claude helper, `CamelModel`), one folder per AI feature in `app/features/` (router, schemas, service, prompt). Tests and evals mirror that layout. See the README's "Adding a feature". Sibling repos: `../pitchr-client` (React) and `../pitchr-server` (NestJS).
 
 ## Ground rules
 
@@ -13,7 +13,7 @@ pitchr-client  →  pitchr-server (NestJS)  →  pitchr-ai  →  Claude API
 - The browser never talks to pitchr-ai. Don't add CORS settings, browser-facing auth, or endpoints designed for the client.
 - pitchr-server decides when to call this service. User auth (JWT) stays in NestJS; this service does not know about users or sessions.
 - Treat requests as coming from a trusted internal caller, but still validate every request body with Pydantic models.
-- Every route requires the shared secret automatically (the check is attached to the whole app in `main.py`). NestJS sends it in the `X-Internal-Api-Key` header. The only way to make a route public is adding it to `PUBLIC_PATHS` in `app/security.py`; currently just `/health`, for Railway's health checks. Don't add to it without a good reason.
+- Every route requires the shared secret automatically (the check is attached to the whole app in `main.py`). NestJS sends it in the `X-Internal-Api-Key` header. The only way to make a route public is adding it to `PUBLIC_PATHS` in `app/core/security.py`; currently just `/health`, for Railway's health checks. Don't add to it without a good reason.
 
 ### 2. NestJS sends the data each request needs (for now)
 

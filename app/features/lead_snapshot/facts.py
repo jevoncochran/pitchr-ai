@@ -8,7 +8,7 @@ import datetime as dt
 from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
-from app.schemas.lead_snapshot import (
+from app.features.lead_snapshot.schemas import (
     EffortCounts,
     LastActivity,
     LastContact,

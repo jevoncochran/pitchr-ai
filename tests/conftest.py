@@ -3,8 +3,8 @@
 import pytest
 from fastapi.testclient import TestClient
 
-import app.services.claude as claude_service
-from app.config import Settings, get_settings
+import app.core.claude as claude_service
+from app.core.config import Settings, get_settings
 from app.main import app
 
 TEST_API_KEY = "test-api-key"

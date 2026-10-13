@@ -2,13 +2,13 @@
 
 import datetime as dt
 
-from app.schemas.lead_snapshot import SignalInfo, TouchpointInfo
-from app.services.snapshot_facts import (
+from app.features.lead_snapshot.facts import (
     count_effort,
     describe_signal,
     find_last_activity,
     find_last_contact,
 )
+from app.features.lead_snapshot.schemas import SignalInfo, TouchpointInfo
 
 TODAY = dt.date(2026, 10, 13)
 

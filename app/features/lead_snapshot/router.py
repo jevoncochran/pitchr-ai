@@ -2,9 +2,9 @@
 
 from fastapi import APIRouter, HTTPException
 
-from app.schemas.lead_snapshot import LeadSnapshotRequest, LeadSnapshotResponse
-from app.services.claude import ClaudeError
-from app.services.lead_snapshot import create_snapshot
+from app.core.claude import ClaudeError
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest, LeadSnapshotResponse
+from app.features.lead_snapshot.service import create_snapshot
 
 router = APIRouter(prefix="/leads", tags=["lead snapshot"])
 

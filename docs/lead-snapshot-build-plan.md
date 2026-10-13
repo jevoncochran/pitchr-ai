@@ -4,6 +4,8 @@ How the lead snapshot feature gets built, step by step. The feature itself is de
 
 **Status:** ✅ done · ⏭️ next · ⬜ not started
 
+File paths reflect the feature-based layout (`app/core/`, `app/features/lead_snapshot/`) adopted after step 12.
+
 ## How a request flows
 
 ```
@@ -28,7 +30,7 @@ You click "Snapshot" on a lead page            (pitchr-client)
 The agreed plan, saved in the repo: what the snapshot contains, the conversion-odds rules, the input data and the prompt rules. No real lead data, since the repo is public.
 
 ### ✅ Step 2: The contract (request and response models)
-**File:** `app/schemas/lead_snapshot.py`
+**File:** `app/features/lead_snapshot/schemas.py`
 
 Pydantic models for exactly what NestJS sends and what we send back. FastAPI uses them to reject malformed requests automatically.
 
@@ -37,7 +39,7 @@ Pydantic models for exactly what NestJS sends and what we send back. FastAPI use
 - Response: `LastContact`, `LastActivity`, `EffortCounts` (computed in code) and `SnapshotAnalysis` (written by Claude), bundled in `LeadSnapshotResponse`
 
 ### ✅ Step 3: The facts (no AI)
-**File:** `app/services/snapshot_facts.py`
+**File:** `app/features/lead_snapshot/facts.py`
 
 Plain Python that computes the facts, so they're right every time:
 
@@ -46,7 +48,7 @@ Plain Python that computes the facts, so they're right every time:
 - **Effort counts**: every touchpoint type is counted: visits (including visit attempts), emails, calls, DMs, texts, meetings, networking events, walk-ups, referral outreach, and "other" as a catch-all for anything else
 
 ### ✅ Step 4: Settings
-**Files:** `app/config.py`, `.env.example`
+**Files:** `app/core/config.py`, `.env.example`
 
 Reads settings from environment variables, or from a local `.env` file.
 
@@ -55,7 +57,7 @@ Reads settings from environment variables, or from a local `.env` file.
 - `.env.example` is the committed template; your real `.env` stays out of git
 
 ### ✅ Step 5: The shared Claude helper
-**File:** `app/services/claude.py`
+**File:** `app/core/claude.py`
 
 `generate_structured()`: every Claude call in the project goes through it (CLAUDE.md rule 3).
 
@@ -68,7 +70,7 @@ Reads settings from environment variables, or from a local `.env` file.
 Tested with one real call: works, about $0.002.
 
 ### ✅ Step 6: The prompt
-**File:** `app/prompts/lead_snapshot.py`
+**File:** `app/features/lead_snapshot/prompt.py`
 
 Instructions for Claude: who's reading the snapshot and why, the conversion-odds rules, and the prompt rules from the spec. Kept in its own file because it's the part that changes most during tuning.
 
@@ -78,7 +80,7 @@ Instructions for Claude: who's reading the snapshot and why, the conversion-odds
 - No example snapshots yet: we'll decide at the tuning checkpoint whether made-up examples help
 
 ### ✅ Step 7: The feature logic
-**File:** `app/services/lead_snapshot.py`
+**File:** `app/features/lead_snapshot/service.py`
 
 Combines step 3's facts with Claude's analysis (steps 5–6) into one snapshot.
 
@@ -87,7 +89,7 @@ Combines step 3's facts with Claude's analysis (steps 5–6) into one snapshot.
 First end-to-end run on a made-up lead: about 2,300 tokens in, 410 out, ~8 seconds, ~$0.02.
 
 ### ✅ Step 8: The endpoint
-**Files:** `app/routers/lead_snapshot.py`, `app/main.py`
+**Files:** `app/features/lead_snapshot/router.py`, `app/main.py`
 
 `POST /leads/snapshot`: receives the request, calls step 7 and returns the result. Also turns on logging in `main.py` so the Claude log lines appear when the app runs.
 
@@ -102,9 +104,9 @@ First end-to-end run on a made-up lead: about 2,300 tokens in, 410 out, ~8 secon
 
 17 tests, all passing in under a second. Run them with `uv run pytest`.
 
-- `test_snapshot_facts.py`: last contact, last activity, signal descriptions, effort counts
+- `test_facts.py`: last contact, last activity, signal descriptions, effort counts
 - `test_prompt.py`: date formatting, the 25-touchpoint limit, empty sections
-- `test_lead_snapshot_endpoint.py`: success (camelCase JSON), what gets sent to Claude, Claude failing (502), bad input (422). Claude is faked, so these are free.
+- `test_endpoint.py`: success (camelCase JSON), what gets sent to Claude, Claude failing (502), bad input (422). Claude is faked, so these are free.
 - New dev dependency: `pytest`. Ruff lint and format pass on the whole project.
 
 ### ✅ Checkpoint: tune the prompt
@@ -140,7 +142,7 @@ Same prompt, same four cases, effort `low`, on three models:
 | Checklists | All passed | **All passed** | Missed 2 points |
 | Invented facts | None | **None** | One serious one |
 
-- **Sonnet** matched Opus on every case, so it's the default now (`claude_model` in `app/config.py`).
+- **Sonnet** matched Opus on every case, so it's the default now (`claude_model` in `app/core/config.py`).
 - **Haiku** wrote that the med spa has "an existing video provider" when the data only says "someone." That's exactly the distinction the existing-provider rule depends on, so it would have led us to drop a lead wrongly. Not used for this feature.
 - Four cases is a small sample: if a real snapshot ever misleads, add that lead (with made-up names) as a new eval case and rerun. Switching models is one setting (`CLAUDE_MODEL`), no code change.
 
@@ -161,9 +163,9 @@ Same prompt, same four cases, effort `low`, on three models:
 Checked: the request built for all 195 leads in the database validates against pitchr-ai's models; a real Rabbit Roofing snapshot came back in 5.4s.
 
 ### ✅ Step 11: Shared secret
-**Files:** `app/security.py` (new), `app/main.py`, `app/config.py`, `tests/conftest.py`, `tests/test_security.py` (pitchr-ai); `src/leads/lead-snapshot.service.ts` (pitchr-server); both `.env.example` files
+**Files:** `app/core/security.py` (new), `app/main.py`, `app/core/config.py`, `tests/conftest.py`, `tests/core/test_security.py` (pitchr-ai); `src/leads/lead-snapshot.service.ts` (pitchr-server); both `.env.example` files
 
-**Secure by default:** every pitchr-ai route requires the `X-Internal-Api-Key` header to match `PITCHR_AI_API_KEY`, or it returns `401`. The check is attached to the whole app in `main.py`, so new routes are protected automatically. The only exceptions are listed in `PUBLIC_PATHS` in `app/security.py`: just `/health`, for Railway's health checks.
+**Secure by default:** every pitchr-ai route requires the `X-Internal-Api-Key` header to match `PITCHR_AI_API_KEY`, or it returns `401`. The check is attached to the whole app in `main.py`, so new routes are protected automatically. The only exceptions are listed in `PUBLIC_PATHS` in `app/core/security.py`: just `/health`, for Railway's health checks.
 
 - NestJS sends the header on every call. Same setting name, `PITCHR_AI_API_KEY`, in both services
 - Compared with `secrets.compare_digest`, so the key can't be guessed by timing responses

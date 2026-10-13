@@ -2,9 +2,9 @@
 
 import datetime as dt
 
-from app.prompts.lead_snapshot import MAX_TOUCHPOINTS, build_prompt, format_date
-from app.schemas.lead_snapshot import LeadSnapshotRequest
-from app.services.snapshot_facts import compute_facts
+from app.features.lead_snapshot.facts import compute_facts
+from app.features.lead_snapshot.prompt import MAX_TOUCHPOINTS, build_prompt, format_date
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest
 
 TODAY = dt.date(2026, 10, 13)
 

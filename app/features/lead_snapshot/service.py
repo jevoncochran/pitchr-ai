@@ -3,14 +3,14 @@
 See docs/lead-snapshot.md for the spec.
 """
 
-from app.prompts.lead_snapshot import SYSTEM_PROMPT, build_prompt
-from app.schemas.lead_snapshot import (
+from app.core.claude import generate_structured
+from app.features.lead_snapshot.facts import compute_facts
+from app.features.lead_snapshot.prompt import SYSTEM_PROMPT, build_prompt
+from app.features.lead_snapshot.schemas import (
     LeadSnapshotRequest,
     LeadSnapshotResponse,
     SnapshotAnalysis,
 )
-from app.services.claude import generate_structured
-from app.services.snapshot_facts import compute_facts
 
 FEATURE = "lead_snapshot"
 

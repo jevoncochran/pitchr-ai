@@ -6,8 +6,8 @@ build_prompt() turns one lead's data into the message Claude reads.
 
 import datetime as dt
 
-from app.schemas.lead_snapshot import LeadSnapshotRequest
-from app.services.snapshot_facts import SnapshotFacts, describe_signal, local_date
+from app.features.lead_snapshot.facts import SnapshotFacts, describe_signal, local_date
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest
 
 MAX_TOUCHPOINTS = 25
 

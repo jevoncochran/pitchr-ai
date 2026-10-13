@@ -17,10 +17,10 @@ import re
 import time
 from pathlib import Path
 
-from app.config import get_settings
-from app.prompts.lead_snapshot import format_date
-from app.schemas.lead_snapshot import LeadSnapshotRequest, LeadSnapshotResponse
-from app.services.lead_snapshot import EFFORT, create_snapshot
+from app.core.config import get_settings
+from app.features.lead_snapshot.prompt import format_date
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest, LeadSnapshotResponse
+from app.features.lead_snapshot.service import EFFORT, create_snapshot
 
 EVAL_DIR = Path(__file__).parent / "lead_snapshot"
 
