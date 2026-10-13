@@ -42,6 +42,28 @@ def test_prompt_keeps_only_the_most_recent_touchpoints():
     assert f"({30 - MAX_TOUCHPOINTS} older touchpoints not shown)" in prompt
 
 
+def test_prompt_dates_an_evening_touchpoint_in_tampa_time():
+    # 9pm in Tampa on 10/13 is stored as 1am UTC on 10/14
+    request = LeadSnapshotRequest.model_validate(
+        {
+            "today": TODAY.isoformat(),
+            "lead": {"business": "Example", "pipelineStage": "NEW"},
+            "touchpoints": [
+                {
+                    "date": "2026-10-14T01:00:00Z",
+                    "type": "IN_PERSON",
+                    "summary": "visited after dinner",
+                }
+            ],
+        }
+    )
+
+    prompt = build_prompt(request, compute_facts(request))
+
+    assert "10/13/26 (today) IN_PERSON" in prompt
+    assert "in 1 days" not in prompt
+
+
 def test_prompt_says_none_for_empty_sections():
     request = LeadSnapshotRequest.model_validate(
         {

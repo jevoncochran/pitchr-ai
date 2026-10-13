@@ -78,6 +78,44 @@ def test_last_activity_describes_a_response():
     assert last.description == "Responded to our email"
 
 
+# ── Timezones ────────────────────────────────────────────────────────────────
+
+
+def test_evening_touchpoint_counts_as_that_day_in_tampa():
+    # 9pm in Tampa on 10/13 is stored as 1am UTC on 10/14
+    evening_visit = TouchpointInfo(
+        date=dt.datetime(2026, 10, 14, 1, 0, tzinfo=dt.UTC), type="IN_PERSON"
+    )
+
+    last = find_last_contact([evening_visit], TODAY)
+
+    assert last.date == dt.date(2026, 10, 13)
+    assert last.days_ago == 0
+
+
+def test_evening_signal_counts_as_that_day_in_tampa():
+    evening_signal = SignalInfo(
+        date=dt.datetime(2026, 10, 14, 1, 0, tzinfo=dt.UTC), type="FOLLOW"
+    )
+
+    last = find_last_activity([], [evening_signal], TODAY)
+
+    assert last.date == dt.date(2026, 10, 13)
+    assert last.days_ago == 0
+
+
+def test_winter_dates_use_standard_time():
+    # 10:30pm EST on 11/30 is 3:30am UTC on 12/1 (an hour later than in summer)
+    evening_visit = TouchpointInfo(
+        date=dt.datetime(2026, 12, 1, 3, 30, tzinfo=dt.UTC), type="IN_PERSON"
+    )
+
+    last = find_last_contact([evening_visit], dt.date(2026, 12, 1))
+
+    assert last.date == dt.date(2026, 11, 30)
+    assert last.days_ago == 1
+
+
 # ── Signal descriptions ──────────────────────────────────────────────────────
 
 
