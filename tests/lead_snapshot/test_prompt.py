@@ -2,9 +2,9 @@
 
 import datetime as dt
 
-from app.prompts.lead_snapshot import MAX_TOUCHPOINTS, build_prompt, format_date
-from app.schemas.lead_snapshot import LeadSnapshotRequest
-from app.services.snapshot_facts import compute_facts
+from app.features.lead_snapshot.facts import compute_facts
+from app.features.lead_snapshot.prompt import MAX_TOUCHPOINTS, build_prompt, format_date
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest
 
 TODAY = dt.date(2026, 10, 13)
 
@@ -40,6 +40,28 @@ def test_prompt_keeps_only_the_most_recent_touchpoints():
     assert "touchpoint number 29" in prompt  # newest kept
     assert "touchpoint number 4\n" not in prompt  # oldest dropped
     assert f"({30 - MAX_TOUCHPOINTS} older touchpoints not shown)" in prompt
+
+
+def test_prompt_dates_an_evening_touchpoint_in_tampa_time():
+    # 9pm in Tampa on 10/13 is stored as 1am UTC on 10/14
+    request = LeadSnapshotRequest.model_validate(
+        {
+            "today": TODAY.isoformat(),
+            "lead": {"business": "Example", "pipelineStage": "NEW"},
+            "touchpoints": [
+                {
+                    "date": "2026-10-14T01:00:00Z",
+                    "type": "IN_PERSON",
+                    "summary": "visited after dinner",
+                }
+            ],
+        }
+    )
+
+    prompt = build_prompt(request, compute_facts(request))
+
+    assert "10/13/26 (today) IN_PERSON" in prompt
+    assert "in 1 days" not in prompt
 
 
 def test_prompt_says_none_for_empty_sections():

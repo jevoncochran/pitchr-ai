@@ -6,8 +6,8 @@ build_prompt() turns one lead's data into the message Claude reads.
 
 import datetime as dt
 
-from app.schemas.lead_snapshot import LeadSnapshotRequest
-from app.services.snapshot_facts import SnapshotFacts, describe_signal
+from app.features.lead_snapshot.facts import SnapshotFacts, describe_signal, local_date
+from app.features.lead_snapshot.schemas import LeadSnapshotRequest
 
 MAX_TOUCHPOINTS = 25
 
@@ -89,7 +89,7 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
         ("Dormant reason", lead.dormant_reason),
         (
             "Revisit dormant lead on",
-            format_date(lead.dormant_revisit_at.date(), today)
+            format_date(local_date(lead.dormant_revisit_at), today)
             if lead.dormant_revisit_at
             else None,
         ),
@@ -138,7 +138,7 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
     recent = sorted(request.touchpoints, key=lambda tp: tp.date)[-MAX_TOUCHPOINTS:]
     touchpoint_lines = []
     for tp in recent:
-        line = f"- {format_date(tp.date.date(), today)} {tp.type}"
+        line = f"- {format_date(local_date(tp.date), today)} {tp.type}"
         if tp.contact_names:
             line += f" with {', '.join(tp.contact_names)}"
         if tp.received_response:
@@ -153,7 +153,7 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
 
     # Signals
     signal_lines = [
-        f"- {format_date(s.date.date(), today)} {describe_signal(s)}"
+        f"- {format_date(local_date(s.date), today)} {describe_signal(s)}"
         + (f": {s.note}" if s.note else "")
         for s in sorted(request.signals, key=lambda s: s.date)
     ]
@@ -161,7 +161,7 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
 
     # Notes
     note_lines = [
-        f"- {format_date(n.date.date(), today)} {n.text.strip()}"
+        f"- {format_date(local_date(n.date), today)} {n.text.strip()}"
         for n in sorted(request.notes, key=lambda n: n.date)
     ]
     sections.append(tag("notes", "\n".join(note_lines) or "None."))
@@ -169,7 +169,9 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
     # Open tasks
     task_lines = []
     for t in request.open_tasks:
-        due = format_date(t.due_date.date(), today) if t.due_date else "no due date"
+        due = (
+            format_date(local_date(t.due_date), today) if t.due_date else "no due date"
+        )
         task_lines.append(f"- {t.type}, due {due}" + (f": {t.note}" if t.note else ""))
     sections.append(tag("open_tasks", "\n".join(task_lines) or "None."))
 

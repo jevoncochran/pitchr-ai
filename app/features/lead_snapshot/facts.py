@@ -6,8 +6,9 @@ right every time. Claude only writes the parts that need judgment.
 
 import datetime as dt
 from dataclasses import dataclass
+from zoneinfo import ZoneInfo
 
-from app.schemas.lead_snapshot import (
+from app.features.lead_snapshot.schemas import (
     EffortCounts,
     LastActivity,
     LastContact,
@@ -69,6 +70,21 @@ TOUCHPOINT_NOUNS = {
 }
 
 
+# Must match the timezone pitchr-server uses to work out `today`.
+BUSINESS_TIMEZONE = ZoneInfo("America/New_York")
+
+
+def local_date(moment: dt.datetime) -> dt.date:
+    """The calendar date of `moment` where the business is.
+
+    Timestamps arrive in UTC, so a visit at 9pm in Tampa is stored as 1am the
+    next day. Taking the UTC date would put it in the future.
+    """
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=dt.UTC)
+    return moment.astimezone(BUSINESS_TIMEZONE).date()
+
+
 @dataclass
 class SnapshotFacts:
     last_contact: LastContact | None
@@ -84,7 +100,7 @@ def find_last_contact(
         return None
 
     latest = max(touchpoints, key=lambda tp: tp.date)
-    latest_date = latest.date.date()
+    latest_date = local_date(latest.date)
     return LastContact(
         date=latest_date,
         days_ago=(today - latest_date).days,
@@ -120,7 +136,7 @@ def find_last_activity(
         return None
 
     latest_when, latest_what = max(actions, key=lambda action: action[0])
-    latest_date = latest_when.date()
+    latest_date = local_date(latest_when)
     return LastActivity(
         date=latest_date,
         days_ago=(today - latest_date).days,

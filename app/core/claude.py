@@ -10,7 +10,7 @@ from functools import lru_cache
 import anthropic
 from pydantic import BaseModel
 
-from app.config import get_settings
+from app.core.config import get_settings
 
 logger = logging.getLogger("pitchr_ai.claude")
 

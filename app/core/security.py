@@ -10,7 +10,7 @@ from typing import Annotated
 from fastapi import Depends, HTTPException, Request
 from fastapi.security import APIKeyHeader
 
-from app.config import Settings, get_settings
+from app.core.config import Settings, get_settings
 
 # Routes anyone can call. Everything else requires the shared secret.
 # /health stays open because Railway's health checks can't send headers.

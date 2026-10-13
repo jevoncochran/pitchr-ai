@@ -6,15 +6,9 @@ See docs/lead-snapshot.md for the full spec.
 import datetime as dt
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
-from pydantic.alias_generators import to_camel
+from pydantic import Field
 
-
-class CamelModel(BaseModel):
-    """Uses snake_case in Python but camelCase in JSON, to match NestJS."""
-
-    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
-
+from app.core.schemas import CamelModel
 
 # ── Request (sent by NestJS) ─────────────────────────────────────────────────
 
@@ -47,7 +41,7 @@ class TouchpointInfo(CamelModel):
     date: dt.datetime
     type: str
     received_response: bool = False
-    contact_names: list[str] = []
+    contact_names: list[str] = Field(default_factory=list)
     summary: str | None = None
 
 
@@ -72,11 +66,11 @@ class TaskInfo(CamelModel):
 class LeadSnapshotRequest(CamelModel):
     today: dt.date
     lead: LeadInfo
-    contacts: list[ContactInfo] = []
-    touchpoints: list[TouchpointInfo] = []
-    signals: list[SignalInfo] = []
-    notes: list[NoteInfo] = []
-    open_tasks: list[TaskInfo] = []
+    contacts: list[ContactInfo] = Field(default_factory=list)
+    touchpoints: list[TouchpointInfo] = Field(default_factory=list)
+    signals: list[SignalInfo] = Field(default_factory=list)
+    notes: list[NoteInfo] = Field(default_factory=list)
+    open_tasks: list[TaskInfo] = Field(default_factory=list)
 
 
 # ── Response ─────────────────────────────────────────────────────────────────

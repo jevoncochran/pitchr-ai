@@ -46,14 +46,38 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | Method | Path | Description |
 | --- | --- | --- |
 | `GET` | `/health` | Returns `{"status": "ok"}` when the service is running |
+| `POST` | `/leads/snapshot` | Short AI summary of a lead's current state and how to approach them. Requires the `X-Internal-Api-Key` header. |
 
 ## Project structure
+
+Organized by feature, like pitchr-server: shared code lives in `app/core/`, and each AI feature gets its own folder in `app/features/`.
 
 ```
 pitchr-ai/
 ├── app/
-│   ├── __init__.py
-│   └── main.py        # FastAPI app and routes
-├── pyproject.toml     # Project settings and dependencies
-└── uv.lock            # Exact dependency versions (managed by uv)
+│   ├── main.py                 # Creates the app, attaches the API key check, includes feature routers
+│   ├── core/                   # Shared by every feature
+│   │   ├── config.py           # Settings from environment variables / .env
+│   │   ├── security.py         # Shared-secret check on every route (except PUBLIC_PATHS)
+│   │   ├── claude.py           # The one helper all Claude calls go through (logs every call)
+│   │   └── schemas.py          # CamelModel: snake_case in Python, camelCase in JSON
+│   └── features/
+│       └── lead_snapshot/      # One folder per AI feature
+│           ├── router.py       # POST /leads/snapshot
+│           ├── schemas.py      # Request and response models
+│           ├── facts.py        # Facts computed in code (no AI)
+│           ├── prompt.py       # System prompt and how lead data is laid out for Claude
+│           └── service.py      # Ties it together: facts + Claude's analysis
+├── tests/                      # Mirrors app/: tests/core/, tests/lead_snapshot/
+├── evals/                      # Real-Claude quality checks, one folder per feature
+├── docs/                       # Feature specs and build plans
+├── pyproject.toml              # Project settings and dependencies
+└── uv.lock                     # Exact dependency versions (managed by uv)
 ```
+
+### Adding a feature
+
+1. Create `app/features/<feature_name>/` with its own `router.py`, `schemas.py`, `service.py` (and `prompt.py` if it calls Claude).
+2. Include its router in `app/main.py`. It's protected by the API key automatically.
+3. Call Claude only through `app.core.claude.generate_structured`, with a `feature` name for the logs.
+4. Add tests in `tests/<feature_name>/` and, for anything Claude writes, eval cases in `evals/<feature_name>/`.
