@@ -1,0 +1,59 @@
+{
+  "name": "Med spa: unreachable manager, already has a provider",
+  "reference_snapshot": "We last contacted this lead 5 months ago on 5/7/26. We have been unable to make contact with Renata. We have sent several emails to her. We have visited the business a total of 4 times. Renata has not made herself available and she has not responded to our emails. The last time we made contact, we spoke with Mia. The probability of converting this lead is low as staff have indicated they already have a marketing provider. The goal here is to possibly warm up this lead after an extended period of no contact or determine if we need to deprioritize or remove this lead.",
+  "must_get_right": [
+    "Odds: low, because they already have a provider and the manager is unreachable",
+    "Decision-maker: Renata, the manager, named only in touchpoint summaries",
+    "Mentions Mia as the person we last spoke with",
+    "Provider type is unclear, so the goal includes finding out what kind of provider they have (video vs. marketing agency), without pressing",
+    "Goal includes deciding whether to deprioritize the lead",
+    "Doesn't claim Renata ever responded"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Glow Med Spa",
+      "industry": "aesthetics and wellness",
+      "businessType": "med spa",
+      "pipelineStage": "NEW",
+      "source": "OUTREACH"
+    },
+    "touchpoints": [
+      {
+        "date": "2025-08-08T15:00:00Z",
+        "type": "INSTAGRAM_DM",
+        "summary": "DM'd them and sent a client video"
+      },
+      {
+        "date": "2025-11-17T15:00:00Z",
+        "type": "IN_PERSON",
+        "summary": "I showed the video to the front desk staff but couldn't speak to the manager because she was in a training. They told me to email her."
+      },
+      {
+        "date": "2025-11-18T15:00:00Z",
+        "type": "EMAIL",
+        "summary": "sent email to Renata"
+      },
+      {
+        "date": "2025-12-03T15:00:00Z",
+        "type": "IN_PERSON",
+        "summary": "Mia told me Renata wasn't in. She doesn't always come in. Mia gave her my information."
+      },
+      {
+        "date": "2025-12-05T15:00:00Z",
+        "type": "EMAIL",
+        "summary": "I sent Renata another email with free video promo offer."
+      },
+      {
+        "date": "2025-12-17T15:00:00Z",
+        "type": "IN_PERSON",
+        "summary": "I visited and asked for Renata. They said she wasn't in. I pushed but they were reluctant to give me any information that could help me get to her."
+      },
+      {
+        "date": "2026-05-07T15:00:00Z",
+        "type": "IN_PERSON",
+        "summary": "Walked in and gave them the flier. Spoke to Mia. She said they had someone they have been working with for over a year so that's probably why they didn't respond before. Send info to Renata anyway even though it's a long shot."
+      }
+    ]
+  }
+}
