@@ -1,0 +1,26 @@
+{
+  "name": "Women's health clinic: referral, owner said 'not until August'",
+  "reference_snapshot": "We last contacted this lead 5 months ago on 5/7/26. We have made contact with Dr. Hale. Another client, Tina from Silver Lining Spa, reached out to Dr. Hale on our behalf and gave us the referral. We spoke to Dr. Hale on 5/7/26. She told us that she was in talks with another marketing company and that she would get back to us. The probability of converting this lead is unknown as we do not have enough data. The goal here is to possibly warm up this lead after an extended period of no contact.",
+  "must_get_right": [
+    "Surfaces the timing: Dr. Hale said follow up late May, away June-July, nothing until August, so the window is now open",
+    "Mentions the referral from Tina (Silver Lining Spa)",
+    "Mentions she's talking to another marketing company and her reaction was lukewarm",
+    "Decision-maker: Dr. Hale, the owner, named only in touchpoint summaries",
+    "Odds: low, or medium with a clear reason (lukewarm + competitor vs. timing now right)"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Bayside Women's Health & Aesthetics",
+      "industry": "aesthetics and wellness",
+      "businessType": "med spa",
+      "pipelineStage": "ENGAGED",
+      "source": "REFERRAL"
+    },
+    "touchpoints": [
+      {"date": "2026-03-09T15:00:00Z", "type": "REFERRAL_OUTREACH", "summary": "Tina (owner of Silver Lining Spa) reached out to the owner on my behalf and the owner said she would reach out to me"},
+      {"date": "2026-05-06T15:00:00Z", "type": "CALL", "summary": "I called and they told me Dr. Hale wasn't there, would be in tmrw"},
+      {"date": "2026-05-07T15:00:00Z", "type": "IN_PERSON", "summary": "went there and spoke w Dr. Hale, showed her videos we made for another client. reaction was lukewarm. she said she was looking at another marketing company. told me she would get back to me. I asked her when I could follow up - she said late May. she would be on vacation in June and July. if she does something, it won't be until August."}
+    ]
+  }
+}

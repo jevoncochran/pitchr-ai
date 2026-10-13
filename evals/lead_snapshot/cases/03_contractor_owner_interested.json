@@ -1,0 +1,38 @@
+{
+  "name": "Contractor: owner wanted photo/video, then went quiet",
+  "reference_snapshot": "We last contacted this lead 4 months ago on 6/2/26. We have made contact with Linda. We have visited the business in person 2 times and we have sent several emails and made several calls trying to get a hold of Linda. We met her at a networking event on 5/21/26 and she was receptive and instructed us to reach out to set up a meeting. The probability of converting this lead is unknown as so much time has passed without contact. The goal here is to possibly warm up this lead after an extended period of no contact.",
+  "must_get_right": [
+    "Decision-maker: Linda Moreno, owner; met at a networking event 5/21, receptive, asked for a meeting",
+    "Mentions Brooke as the day-to-day contact and route to Linda",
+    "Mentions Linda wants photo/video work (a family member's attempt didn't work out)",
+    "Notes the 'follow up week after next' from 6/2 never happened",
+    "Odds: medium, with interest-may-have-cooled reasoning (no contact in 90+ days)",
+    "Doesn't describe anyone's appearance"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Summit Build Co.",
+      "industry": "construction and trades",
+      "businessType": "roofing contractor",
+      "pipelineStage": "ENGAGED",
+      "sequenceStep": 4,
+      "isHot": true
+    },
+    "contacts": [
+      {"firstName": "Brooke", "bio": "She is the contact for now. Not the owner so I am not sure how much sway she has. But she seemed more involved than a typical non-decision maker employee"},
+      {"firstName": "Linda", "lastName": "Moreno", "title": "owner", "isDecisionMaker": true}
+    ],
+    "touchpoints": [
+      {"date": "2026-05-01T15:00:00Z", "type": "IN_PERSON", "contactNames": [], "summary": "Talked to Brooke, who was nice. She said the owner was in a meeting but she said they might be interested. Send email to get meeting set up."},
+      {"date": "2026-05-04T15:00:00Z", "type": "EMAIL", "contactNames": ["Brooke", "Linda"]},
+      {"date": "2026-05-12T15:00:00Z", "type": "EMAIL", "contactNames": ["Brooke", "Linda"], "summary": "Hi Brooke, I wanted to follow up on my email from last week; I'm just making sure it didn't get buried. I'd still love to find a time to sit down with you and the owner to explore how video content can help Summit Build Co. drive more sales. Even a quick 20-minute intro call would be a great first step. Let me know what works for your schedule -- I'm flexible!"},
+      {"date": "2026-05-15T15:00:00Z", "type": "IN_PERSON", "contactNames": ["Brooke"], "summary": "Talked to Brooke. She said she forwarded my email to owner. Owner was out of office and she didn't know if the owner would be back next week. Go back week after next."},
+      {"date": "2026-05-21T15:00:00Z", "type": "NETWORKING", "contactNames": ["Brooke", "Linda"], "summary": "Ran into Linda and Brooke at the clay shooting event hosted by a local contractors' association. Brooke recognized me. Actually was my first time meeting Linda in person. She asked me to set up a meeting so that we could talk more - she wants photo/video work done. She tried to get a family member who is a photographer to do it but didn't work out with that person for whatever reason. She seems really nice. She told me to contact Brooke to set something up for Tuesday or Wednesday of next week."},
+      {"date": "2026-05-22T15:00:00Z", "type": "EMAIL", "contactNames": ["Brooke", "Linda"], "summary": "sent follow up email from yesterday to try to schedule meeting for next week"},
+      {"date": "2026-05-26T15:00:00Z", "type": "CALL", "contactNames": ["Brooke"], "summary": "Called and spoke to Brooke. Tried to nail down time for meeting w Linda this week. Brooke said Linda left early for meeting but she would send her text. Would follow up w me by email tmrw."},
+      {"date": "2026-05-28T15:00:00Z", "type": "EMAIL", "contactNames": ["Brooke", "Linda"], "summary": "didn't hear back from Brooke as promised so sent follow up email. Linda is CC'd."},
+      {"date": "2026-06-02T15:00:00Z", "type": "CALL", "contactNames": ["Brooke"], "summary": "Called and spoke to Brooke. She said Linda is out of office for the week. And next week they would be at a roofing trade show. Asked me if I was going. I told her I would follow up week after next."}
+    ]
+  }
+}

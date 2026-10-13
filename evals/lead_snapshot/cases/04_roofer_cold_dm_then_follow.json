@@ -1,0 +1,27 @@
+{
+  "name": "Roofer: cold DM in May, followed us last week",
+  "reference_snapshot": "We last contacted this lead 5 months ago on 5/6/26. We sent them a cold DM. They followed us on Instagram on 10/6/26. The probability of converting this lead is unknown as we do not have enough data. The goal here is to determine who the decision-maker is and make contact.",
+  "must_get_right": [
+    "Odds: medium, raised by the follow 7 days ago",
+    "Keeps last contact (DM 5/6) and last activity (follow 10/6) separate",
+    "Decision-maker unknown, so the goal is to identify them and make contact",
+    "Doesn't say interest 'may have cooled' (they just followed us)",
+    "Doesn't invent any names or details"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Peak Roofing",
+      "industry": "construction and trades",
+      "businessType": "roofing contractor",
+      "pipelineStage": "NEW",
+      "source": "OUTREACH"
+    },
+    "touchpoints": [
+      {"date": "2026-05-06T15:00:00Z", "type": "INSTAGRAM_DM", "summary": "cold DM"}
+    ],
+    "signals": [
+      {"date": "2026-10-06T12:00:00Z", "type": "FOLLOW", "platform": "INSTAGRAM"}
+    ]
+  }
+}
