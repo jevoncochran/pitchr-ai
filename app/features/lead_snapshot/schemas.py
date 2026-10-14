@@ -21,8 +21,10 @@ class LeadInfo(CamelModel):
     sequence_step: int = 0
     is_hot: bool = False
     priority: str | None = None
-    source: str | None = None
-    discovered_via: str | None = None
+    # How this lead started (e.g. DM, REFERRAL), or Other's description.
+    # The group is WE_REACHED_OUT or THEY_CAME_TO_US. See pitchr-server's docs/lead-origin.md.
+    origin: str | None = None
+    origin_group: str | None = None
     referred_by: str | None = None
     dormant_reason: str | None = None
     dormant_revisit_at: dt.datetime | None = None
@@ -43,6 +45,11 @@ class TouchpointInfo(CamelModel):
     received_response: bool = False
     contact_names: list[str] = Field(default_factory=list)
     summary: str | None = None
+    # DMs, emails and texts logged since outreach sessions: PENDING, REPLIED or
+    # NO_RESPONSE. When REPLIED, their message and the day they sent it.
+    response: str | None = None
+    response_text: str | None = None
+    responded_on: dt.date | None = None
 
 
 class SignalInfo(CamelModel):

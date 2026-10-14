@@ -17,7 +17,9 @@
       "businessType": "roofing contractor",
       "pipelineStage": "ENGAGED",
       "sequenceStep": 4,
-      "isHot": true
+      "isHot": true,
+      "origin": "IN_PERSON_VISIT",
+      "originGroup": "WE_REACHED_OUT"
     },
     "contacts": [
       {"firstName": "Brooke", "bio": "She is the contact for now. Not the owner so I am not sure how much sway she has. But she seemed more involved than a typical non-decision maker employee"},

@@ -78,6 +78,35 @@ def test_last_activity_describes_a_response():
     assert last.description == "Responded to our email"
 
 
+def test_last_activity_uses_the_day_they_replied_not_the_day_we_sent():
+    dm = TouchpointInfo(
+        date=dt.datetime(2026, 9, 1, 15, tzinfo=dt.UTC),
+        type="INSTAGRAM_DM",
+        response="REPLIED",
+        response_text="What do you charge?",
+        responded_on=dt.date(2026, 10, 10),
+    )
+
+    last = find_last_activity([dm], [], TODAY)
+
+    assert last.date == dt.date(2026, 10, 10)
+    assert last.days_ago == 3
+    assert last.description == "Responded to our Instagram DM"
+
+
+def test_pending_and_no_response_are_not_activity():
+    touchpoints = [
+        TouchpointInfo(
+            date=dt.datetime(2026, 10, 1, 15, tzinfo=dt.UTC),
+            type="EMAIL",
+            response=response,
+        )
+        for response in ("PENDING", "NO_RESPONSE")
+    ]
+
+    assert find_last_activity(touchpoints, [], TODAY) is None
+
+
 # ── Timezones ────────────────────────────────────────────────────────────────
 
 

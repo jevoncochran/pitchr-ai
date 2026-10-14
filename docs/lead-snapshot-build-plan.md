@@ -178,14 +178,23 @@ Checked: the request built for all 195 leads in the database validates against p
 
 ## Part 3: pitchr-client (React)
 
-### ⏭️ Step 12: Snapshot button and panel
-A **Snapshot** button on the lead page that shows the result in a panel, with a loading state, since a snapshot takes a few seconds.
+### ✅ Step 12: Snapshot button and panel
+**Files (pitchr-client):** `src/components/leads/LeadSnapshot.tsx` (new), `src/pages/LeadDetailPage.tsx`
 
+A "✨ Lead snapshot" card at the top of each lead's page, above the pipeline stage.
+
+- Nothing runs until **Generate** is clicked (on demand, no cost for just opening a lead); **Refresh** makes a new one
+- States: not generated · loading (about 5s) · error (NestJS's message + Try again) · snapshot
+- Layout: headline, odds badge (color-coded), last contact / last activity, effort chips, decision-maker, key facts, a highlighted Goal + Approach box, the odds reason, and when it was generated
+- Dates from pitchr-ai (`YYYY-MM-DD`) are formatted by hand, because `new Date("2026-05-06")` is UTC midnight and shows the previous day in US time zones
+- Not saved: it doesn't update by itself after new touchpoints; Refresh does
+
+Tested end to end in the app.
 ---
 
 ## Part 4: Deploy
 
-### ⬜ Step 13: Railway
+### ⏭️ Step 13: Railway
 A Dockerfile for pitchr-ai, a new Railway service on private networking, and the environment variables.
 
 ---

@@ -1,0 +1,43 @@
+{
+  "name": "Restaurant: replied 'not until after the holidays'",
+  "reference_snapshot": "We texted the GM, Marco, on 10/2. He replied on 10/6 that they're slammed through the holidays and to reach back out in January. That's a not-before date, so there's nothing to do until January. Odds are medium: he's open to it, just not now. The goal is to stay on good terms and check back in early January, referencing his reply.",
+  "must_get_right": [
+    "Treats 'reach out in January' as a not-before date, not a missed commitment",
+    "Doesn't suggest pushing for a meeting before January",
+    "Last activity is the reply on 10/6",
+    "Odds: medium (receptive but timing is later), not high",
+    "Doesn't invent details beyond the reply and summary"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Casa Marco Kitchen",
+      "industry": "restaurants",
+      "businessType": "restaurant",
+      "pipelineStage": "CONTACTED",
+      "origin": "IN_PERSON_VISIT",
+      "originGroup": "WE_REACHED_OUT"
+    },
+    "contacts": [
+      {"firstName": "Marco", "title": "General manager", "isDecisionMaker": true, "howWeMet": "IN_PERSON"}
+    ],
+    "touchpoints": [
+      {
+        "date": "2026-09-20T18:00:00Z",
+        "type": "IN_PERSON",
+        "contactNames": ["Marco"],
+        "summary": "Met Marco at the host stand, gave him a card. Said to text him."
+      },
+      {
+        "date": "2026-10-02T15:00:00Z",
+        "type": "TEXT",
+        "contactNames": ["Marco"],
+        "summary": "Texted with our restaurant reel",
+        "response": "REPLIED",
+        "receivedResponse": true,
+        "responseText": "Hey, looks great. Honestly we're slammed through the holidays, reach back out in January and we can talk.",
+        "respondedOn": "2026-10-06"
+      }
+    ]
+  }
+}

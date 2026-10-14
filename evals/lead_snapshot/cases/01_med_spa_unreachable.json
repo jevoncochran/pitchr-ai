@@ -16,7 +16,8 @@
       "industry": "aesthetics and wellness",
       "businessType": "med spa",
       "pipelineStage": "NEW",
-      "source": "OUTREACH"
+      "origin": "DM",
+      "originGroup": "WE_REACHED_OUT"
     },
     "touchpoints": [
       {
