@@ -1,6 +1,14 @@
 # Feature: Lead snapshot
 
+**Status:** Built (October 2026)
+
 A short summary of a lead's current state, pulled up right before contacting or visiting them, so the person doing field outreach can decide how to approach the lead. It should read in about 30 seconds.
+
+## Where it runs
+
+- **In the app:** the "✨ Lead snapshot" card at the top of each lead's page. Nothing runs until you click **Generate**; **Refresh** makes a new one. Snapshots aren't saved.
+- **pitchr-client** calls **pitchr-server** `GET /api/leads/:id/snapshot`, which loads the lead's data and calls **pitchr-ai** `POST /leads/snapshot` (with the shared API key).
+- **Model:** Claude Sonnet 5.5 at effort `low`: about 1¢ and 5 seconds per snapshot. Chosen over Opus 5.5 and Haiku 5.5 with the evals (see the build plan).
 
 ## Output
 

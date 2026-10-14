@@ -48,6 +48,16 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | `GET` | `/health` | Returns `{"status": "ok"}` when the service is running |
 | `POST` | `/leads/snapshot` | Short AI summary of a lead's current state and how to approach them. Requires the `X-Internal-Api-Key` header. |
 
+## Docs
+
+| Doc | What it covers |
+| --- | --- |
+| [Lead snapshot](docs/lead-snapshot.md) | Spec: what the snapshot contains, the odds rules, prompt rules, model choice |
+| [Lead snapshot build plan](docs/lead-snapshot-build-plan.md) | How the feature was built, step by step, including the evals and model comparison |
+| [Outreach sessions](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/outreach-sessions.md) (in pitchr-server) | Spec draft: logging outreach sessions, planned routes, analytics |
+
+Specs describe how a feature works now and are updated whenever it changes; build plans are a record of how it was built.
+
 ## Project structure
 
 Organized by feature, like pitchr-server: shared code lives in `app/core/`, and each AI feature gets its own folder in `app/features/`.
