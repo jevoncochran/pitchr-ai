@@ -47,7 +47,7 @@ How signals and time affect the odds:
 ## Input (sent by NestJS)
 
 - **Today's date**
-- **Lead**: business name, industry, business type, pipeline stage, sequence step, hot flag, priority, source (how we got the lead), discovered via (how they heard about us), referred by, dormant reason and revisit date
+- **Lead**: business name, industry, business type, pipeline stage, sequence step, hot flag, priority, how this lead started (origin, e.g. DM, and its group: we reached out / they came to us; see pitchr-server's [lead-origin.md](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/lead-origin.md)), referred by, dormant reason and revisit date
 - **Contacts**: name, title, decision-maker flag, how we met, bio
 - **Touchpoints**: date, type, whether they responded, contact names, full summary (up to the 25 most recent). For DMs, emails and texts logged since outreach sessions: the response (pending, replied or no response) and, when they replied, their message and the date
 - **Signals**: date, type, platform, note

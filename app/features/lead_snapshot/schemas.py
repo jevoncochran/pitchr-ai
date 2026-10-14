@@ -21,8 +21,10 @@ class LeadInfo(CamelModel):
     sequence_step: int = 0
     is_hot: bool = False
     priority: str | None = None
-    source: str | None = None
-    discovered_via: str | None = None
+    # How this lead started (e.g. DM, REFERRAL), or Other's description.
+    # The group is WE_REACHED_OUT or THEY_CAME_TO_US. See pitchr-server's docs/lead-origin.md.
+    origin: str | None = None
+    origin_group: str | None = None
     referred_by: str | None = None
     dormant_reason: str | None = None
     dormant_revisit_at: dt.datetime | None = None

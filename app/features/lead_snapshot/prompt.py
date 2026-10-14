@@ -7,7 +7,11 @@ build_prompt() turns one lead's data into the message Claude reads.
 import datetime as dt
 
 from app.features.lead_snapshot.facts import SnapshotFacts, describe_signal, local_date
-from app.features.lead_snapshot.schemas import LeadSnapshotRequest, TouchpointInfo
+from app.features.lead_snapshot.schemas import (
+    LeadInfo,
+    LeadSnapshotRequest,
+    TouchpointInfo,
+)
 
 MAX_TOUCHPOINTS = 25
 
@@ -89,8 +93,7 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
         ("Sequence step", lead.sequence_step or None),
         ("Marked hot", "yes" if lead.is_hot else None),
         ("Priority", lead.priority),
-        ("How we got this lead", lead.source),
-        ("How they heard about us", lead.discovered_via),
+        ("How this lead started", describe_origin(lead)),
         ("Referred by", lead.referred_by),
         ("Dormant reason", lead.dormant_reason),
         (
@@ -184,6 +187,38 @@ def build_prompt(request: LeadSnapshotRequest, facts: SnapshotFacts) -> str:
 
     sections.append("Write the snapshot for this lead.")
     return "\n\n".join(sections)
+
+
+ORIGIN_LABELS = {
+    "IN_PERSON_VISIT": "In-person visit",
+    "DM": "DM",
+    "EMAIL": "Email",
+    "TEXT": "Text",
+    "CALL": "Call",
+    "NETWORKING_EVENT": "Networking event",
+    "APPROACHED_US": "Approached us in person",
+    "WEBSITE_FORM": "Website form",
+    "REFERRAL": "Referral",
+    "INSTAGRAM": "Found us on Instagram",
+    "FACEBOOK": "Found us on Facebook",
+    "TIKTOK": "Found us on TikTok",
+    "YOUTUBE": "Found us on YouTube",
+    "GOOGLE": "Found us on Google",
+}
+
+ORIGIN_GROUP_LABELS = {
+    "WE_REACHED_OUT": "we reached out",
+    "THEY_CAME_TO_US": "they came to us",
+}
+
+
+def describe_origin(lead: LeadInfo) -> str | None:
+    """e.g. "DM (we reached out)". Other arrives as its own description."""
+    if not lead.origin:
+        return None
+    text = ORIGIN_LABELS.get(lead.origin, lead.origin)
+    group = ORIGIN_GROUP_LABELS.get(lead.origin_group or "")
+    return f"{text} ({group})" if group else text
 
 
 def describe_response(tp: TouchpointInfo, today: dt.date) -> str:

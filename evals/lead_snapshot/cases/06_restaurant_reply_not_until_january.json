@@ -15,7 +15,8 @@
       "industry": "restaurants",
       "businessType": "restaurant",
       "pipelineStage": "CONTACTED",
-      "source": "OUTREACH"
+      "origin": "IN_PERSON_VISIT",
+      "originGroup": "WE_REACHED_OUT"
     },
     "contacts": [
       {"firstName": "Marco", "title": "General manager", "isDecisionMaker": true, "howWeMet": "IN_PERSON"}

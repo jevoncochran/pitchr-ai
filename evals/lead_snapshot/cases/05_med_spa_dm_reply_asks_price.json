@@ -16,7 +16,8 @@
       "businessType": "med spa",
       "pipelineStage": "CONTACTED",
       "sequenceStep": 2,
-      "source": "OUTREACH"
+      "origin": "EMAIL",
+      "originGroup": "WE_REACHED_OUT"
     },
     "contacts": [
       {"firstName": "Dana", "lastName": "Reyes", "title": "Owner", "isDecisionMaker": true}

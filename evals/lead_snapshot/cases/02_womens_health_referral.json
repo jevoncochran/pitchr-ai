@@ -15,7 +15,8 @@
       "industry": "aesthetics and wellness",
       "businessType": "med spa",
       "pipelineStage": "ENGAGED",
-      "source": "REFERRAL"
+      "origin": "REFERRAL",
+      "originGroup": "THEY_CAME_TO_US"
     },
     "touchpoints": [
       {"date": "2026-03-09T15:00:00Z", "type": "REFERRAL_OUTREACH", "summary": "Tina (owner of Silver Lining Spa) reached out to the owner on my behalf and the owner said she would reach out to me"},

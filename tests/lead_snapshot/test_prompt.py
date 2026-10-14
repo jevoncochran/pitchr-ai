@@ -115,3 +115,24 @@ def test_prompt_shows_where_each_reply_stands_and_their_words():
     assert (
         "8/1/26 (73 days ago) EMAIL (they responded)" in prompt
     )  # logged before tracking
+
+
+def test_prompt_says_how_the_lead_started_with_its_group():
+    def prompt_for(lead_fields):
+        request = LeadSnapshotRequest.model_validate(
+            {
+                "today": TODAY.isoformat(),
+                "lead": {"business": "Example", "pipelineStage": "NEW", **lead_fields},
+            }
+        )
+        return build_prompt(request, compute_facts(request))
+
+    assert "How this lead started: DM (we reached out)" in prompt_for(
+        {"origin": "DM", "originGroup": "WE_REACHED_OUT"}
+    )
+    assert "How this lead started: Met at a farmers market (they came to us)" in (
+        prompt_for(
+            {"origin": "Met at a farmers market", "originGroup": "THEY_CAME_TO_US"}
+        )
+    )
+    assert "How this lead started" not in prompt_for({})
