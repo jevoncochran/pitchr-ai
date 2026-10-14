@@ -121,22 +121,23 @@ def find_last_activity(
     touchpoints: list[TouchpointInfo], signals: list[SignalInfo], today: dt.date
 ) -> LastActivity | None:
     """The lead's most recent action: a signal, or a response to our outreach."""
-    # Collect every action the lead took as (when, what happened) pairs
-    actions: list[tuple[dt.datetime, str]] = []
+    # Collect every action the lead took as (day, what happened) pairs
+    actions: list[tuple[dt.date, str]] = []
 
     for signal in signals:
-        actions.append((signal.date, describe_signal(signal)))
+        actions.append((local_date(signal.date), describe_signal(signal)))
 
     for tp in touchpoints:
-        if tp.received_response:
+        if tp.received_response or tp.response == "REPLIED":
             noun = TOUCHPOINT_NOUNS.get(tp.type, "outreach")
-            actions.append((tp.date, f"Responded to our {noun}"))
+            # A recorded reply has its own date; older responses only have ours
+            day = tp.responded_on or local_date(tp.date)
+            actions.append((day, f"Responded to our {noun}"))
 
     if not actions:
         return None
 
-    latest_when, latest_what = max(actions, key=lambda action: action[0])
-    latest_date = local_date(latest_when)
+    latest_date, latest_what = max(actions, key=lambda action: action[0])
     return LastActivity(
         date=latest_date,
         days_ago=(today - latest_date).days,

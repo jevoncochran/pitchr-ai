@@ -1,0 +1,44 @@
+{
+  "name": "Med spa: email went unanswered, DM reply asks about price",
+  "reference_snapshot": "We emailed in September with no response, then DMed on 10/1. The owner, Dana, replied on 10/10 asking what we charge for a 60-second promo for their new location opening in November. Odds are high: the decision-maker described a specific need 3 days ago. The goal is to answer her pricing question and book a call before the November opening; reference our med spa work.",
+  "must_get_right": [
+    "Uses what the reply says (60-second promo, new location opening in November, asked about price)",
+    "Last activity is the reply on 10/10, not the DM we sent on 10/1",
+    "Odds: high (decision-maker described a specific need 3 days ago)",
+    "Goal is to answer the pricing question / book a call before the November opening",
+    "Doesn't treat the earlier unanswered email as a reason for low odds"
+  ],
+  "request": {
+    "today": "2026-10-13",
+    "lead": {
+      "business": "Glow Aesthetics",
+      "industry": "med spa and aesthetics",
+      "businessType": "med spa",
+      "pipelineStage": "CONTACTED",
+      "sequenceStep": 2,
+      "source": "OUTREACH"
+    },
+    "contacts": [
+      {"firstName": "Dana", "lastName": "Reyes", "title": "Owner", "isDecisionMaker": true}
+    ],
+    "touchpoints": [
+      {
+        "date": "2026-09-15T14:00:00Z",
+        "type": "EMAIL",
+        "contactNames": ["Dana Reyes"],
+        "summary": "Intro email with our med spa reel",
+        "response": "NO_RESPONSE"
+      },
+      {
+        "date": "2026-10-01T16:00:00Z",
+        "type": "INSTAGRAM_DM",
+        "contactNames": ["Dana Reyes"],
+        "summary": "Short DM complimenting their new lash bar post, linked our reel",
+        "response": "REPLIED",
+        "receivedResponse": true,
+        "responseText": "Hi! Thanks so much. We're actually opening a second location in Brandon in November and have been thinking about video for it. What do you charge for something like a 60 second promo?",
+        "respondedOn": "2026-10-10"
+      }
+    ]
+  }
+}

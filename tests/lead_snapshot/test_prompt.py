@@ -76,3 +76,42 @@ def test_prompt_says_none_for_empty_sections():
 
     assert "<contacts>\nNone saved.\n</contacts>" in prompt
     assert "Last contact: none, we have never reached out" in prompt
+
+
+def test_prompt_shows_where_each_reply_stands_and_their_words():
+    request = LeadSnapshotRequest.model_validate(
+        {
+            "today": TODAY.isoformat(),
+            "lead": {"business": "Example", "pipelineStage": "CONTACTED"},
+            "touchpoints": [
+                {
+                    "date": "2026-09-01T15:00:00Z",
+                    "type": "EMAIL",
+                    "response": "NO_RESPONSE",
+                },
+                {
+                    "date": "2026-10-01T15:00:00Z",
+                    "type": "INSTAGRAM_DM",
+                    "response": "REPLIED",
+                    "responseText": "  Sounds great, what do you charge?  ",
+                    "respondedOn": "2026-10-10",
+                },
+                {"date": "2026-10-12T15:00:00Z", "type": "TEXT", "response": "PENDING"},
+                {
+                    "date": "2026-08-01T15:00:00Z",
+                    "type": "EMAIL",
+                    "receivedResponse": True,
+                },
+            ],
+        }
+    )
+
+    prompt = build_prompt(request, compute_facts(request))
+
+    assert "EMAIL (no response)" in prompt
+    assert "INSTAGRAM_DM (they replied 10/10/26 (3 days ago))" in prompt
+    assert "Their reply: <reply>Sounds great, what do you charge?</reply>" in prompt
+    assert "TEXT (no reply yet)" in prompt
+    assert (
+        "8/1/26 (73 days ago) EMAIL (they responded)" in prompt
+    )  # logged before tracking

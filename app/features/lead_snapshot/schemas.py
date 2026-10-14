@@ -43,6 +43,11 @@ class TouchpointInfo(CamelModel):
     received_response: bool = False
     contact_names: list[str] = Field(default_factory=list)
     summary: str | None = None
+    # DMs, emails and texts logged since outreach sessions: PENDING, REPLIED or
+    # NO_RESPONSE. When REPLIED, their message and the day they sent it.
+    response: str | None = None
+    response_text: str | None = None
+    responded_on: dt.date | None = None
 
 
 class SignalInfo(CamelModel):

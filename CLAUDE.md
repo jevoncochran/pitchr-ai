@@ -31,6 +31,10 @@ Every call to the Claude API must record:
 
 Route all Claude calls through one shared helper so logging can't be skipped. Never call the Anthropic SDK directly from a route.
 
+### 4. Never spend money without asking
+
+Evals (`evals/`), live calls to an endpoint, and anything else that calls the real Claude API cost money. Never run them without the user's permission, even when a build plan says to rerun an eval. Suggest when a run is worth it and roughly what it costs, then wait for a yes. The test suite (`uv run pytest`) doesn't call Claude and is fine to run anytime.
+
 ## Docs
 
 - **Specs** (`docs/<feature>.md`) describe how a feature works **now** and why. Keep the status line current (Draft → Building → Built). When you change a feature's behavior, update its spec in the same change; once built, remove open questions and rewrite plans as plain descriptions.
