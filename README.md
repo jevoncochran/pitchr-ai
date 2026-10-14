@@ -55,7 +55,7 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | [Lead snapshot](docs/lead-snapshot.md) | Spec: what the snapshot contains, the odds rules, prompt rules, model choice |
 | [Lead snapshot build plan](docs/lead-snapshot-build-plan.md) | How the feature was built, step by step, including the evals and model comparison |
 | [Outreach sessions](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/outreach-sessions.md) (in pitchr-server) | Spec draft: logging outreach sessions, planned routes, analytics |
-| [Lead origin](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/lead-origin.md) (in pitchr-server) | "How this lead started" (we reached out / they came to us), used by analytics and the snapshot |
+| [Lead origin](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/lead-origin.md) (in pitchr-server) | How each lead started (we reached out / they came to us), used by analytics and the snapshot |
 
 Specs describe how a feature works now and are updated whenever it changes; build plans are a record of how it was built.
 
