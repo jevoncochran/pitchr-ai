@@ -47,6 +47,7 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | --- | --- | --- |
 | `GET` | `/health` | Returns `{"status": "ok"}` when the service is running |
 | `POST` | `/leads/snapshot` | Short AI summary of a lead's current state and how to approach them. Requires the `X-Internal-Api-Key` header. |
+| `POST` | `/business-cards/scan` | Reads a photo uploaded to a lead: whether it's a business card, what it says, and which contact it belongs to. Requires the `X-Internal-Api-Key` header. |
 
 ## Docs
 
@@ -54,8 +55,11 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | --- | --- |
 | [Lead snapshot](docs/lead-snapshot.md) | Spec: what the snapshot contains, the odds rules, prompt rules, model choice |
 | [Lead snapshot build plan](docs/lead-snapshot-build-plan.md) | How the feature was built, step by step, including the evals and model comparison |
+| [Prospecting agent](docs/prospecting.md) | Idea (parked): an agent that finds and checks new businesses by type and city, for review before they become leads; plus related agent and RAG ideas |
 | [Outreach sessions](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/outreach-sessions.md) (in pitchr-server) | Spec draft: logging outreach sessions, planned routes, analytics |
 | [Lead origin](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/lead-origin.md) (in pitchr-server) | How each lead started (we reached out / they came to us), used by analytics and the snapshot |
+| [Business card scan](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/business-card-scan.md) (in pitchr-server) | Spec draft: business card photos become contacts |
+| [Visit debrief](https://github.com/jevoncochran/pitchr-server/blob/HEAD/docs/visit-debrief.md) (in pitchr-server) | Spec draft: a dictated note after a visit fills in the visit form |
 
 Specs describe how a feature works now and are updated whenever it changes; build plans are a record of how it was built.
 
@@ -73,13 +77,14 @@ pitchr-ai/
 │   │   ├── claude.py           # The one helper all Claude calls go through (logs every call)
 │   │   └── schemas.py          # CamelModel: snake_case in Python, camelCase in JSON
 │   └── features/
-│       └── lead_snapshot/      # One folder per AI feature
-│           ├── router.py       # POST /leads/snapshot
-│           ├── schemas.py      # Request and response models
-│           ├── facts.py        # Facts computed in code (no AI)
-│           ├── prompt.py       # System prompt and how lead data is laid out for Claude
-│           └── service.py      # Ties it together: facts + Claude's analysis
-├── tests/                      # Mirrors app/: tests/core/, tests/lead_snapshot/
+│       ├── lead_snapshot/      # One folder per AI feature
+│       │   ├── router.py       # POST /leads/snapshot
+│       │   ├── schemas.py      # Request and response models
+│       │   ├── facts.py        # Facts computed in code (no AI)
+│       │   ├── prompt.py       # System prompt and how lead data is laid out for Claude
+│       │   └── service.py      # Ties it together: facts + Claude's analysis
+│       └── business_card_scan/ # POST /business-cards/scan: reads business card photos
+├── tests/                      # Mirrors app/features/: tests/core/, tests/lead_snapshot/, tests/business_card_scan/
 ├── evals/                      # Real-Claude quality checks, one folder per feature
 ├── docs/                       # Feature specs and build plans
 ├── pyproject.toml              # Project settings and dependencies

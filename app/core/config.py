@@ -21,6 +21,11 @@ class Settings(BaseSettings):
     # about 30% faster; Haiku 5.5 invented a fact (see docs/lead-snapshot-build-plan.md).
     claude_model: str = "claude-sonnet-5-5"
 
+    # Optional. Reads BUSINESS_CARD_SCAN_MODEL: the model that reads business cards
+    # (pitchr-server docs/business-card-scan.md). Empty means CLAUDE_MODEL; the business card
+    # eval decides whether a smaller model is enough.
+    business_card_scan_model: str | None = None
+
 
 @lru_cache
 def get_settings() -> Settings:
