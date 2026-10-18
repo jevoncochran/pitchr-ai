@@ -1,0 +1,39 @@
+{
+  "name": "\"After the 15th\" when today is the 16th, a doctor who owns it",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Kim Dermatology",
+      "industry": "Medical",
+      "businessType": "Dermatologist",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "front desk said the owner, dr. kim, is out until after the 15th, come back then. left a flyer."
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-11-16",
+    "come_back_time": null,
+    "left_materials": true,
+    "people": [
+      {
+        "last_name": "Kim",
+        "spoke_with": false,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Kim",
+      "15th|11/16|November"
+    ],
+    "summary_must_not_mention": []
+  }
+}

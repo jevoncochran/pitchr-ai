@@ -1,0 +1,41 @@
+{
+  "name": "Owner's cases: the owner is very interested and says come back tomorrow afternoon",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Habesha Kitchen",
+      "industry": "Restaurants",
+      "businessType": "Restaurant",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "I talked to the owner, Melat. She said was leaving but she seemed very interested. She told me to come back tomorrow afternoon."
+  },
+  "expected": {
+    "outcome": [
+      "INTERESTED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-17",
+    "come_back_time": "13:00",
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Melat",
+        "spoke_with": true,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Melat",
+      "interested",
+      "afternoon"
+    ],
+    "summary_must_not_mention": [],
+    "estimated": true
+  }
+}

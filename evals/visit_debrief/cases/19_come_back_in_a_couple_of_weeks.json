@@ -1,0 +1,40 @@
+{
+  "name": "Too busy, come back in a couple of weeks",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Harbor Grill",
+      "industry": "Restaurants",
+      "businessType": "Restaurant",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "they're slammed getting the holiday menu ready, the manager said come back in a couple of weeks"
+  },
+  "expected": {
+    "outcome": [
+      "COME_BACK_LATER",
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-26",
+    "come_back_time": null,
+    "estimated": true,
+    "left_materials": false,
+    "people": [
+      {
+        "title": "manager",
+        "spoke_with": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "holiday menu",
+      "couple of weeks|two weeks"
+    ],
+    "summary_must_not_mention": []
+  }
+}

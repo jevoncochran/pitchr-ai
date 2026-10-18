@@ -1,0 +1,48 @@
+{
+  "name": "Owner at lunch, back around 3",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Russo's Pizzeria",
+      "industry": "Restaurants",
+      "businessType": "Restaurant",
+      "pipelineStage": "CONTACTED"
+    },
+    "contacts": [
+      {
+        "id": "c-tony",
+        "firstName": "Tony",
+        "lastName": "Russo",
+        "title": "Owner",
+        "isDecisionMaker": true
+      }
+    ],
+    "recentTouchpoints": [],
+    "note": "tony's at lunch, the girl at the register said he'll be back around 3 so I'll swing back"
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-16",
+    "come_back_time": "15:00",
+    "left_materials": false,
+    "people": [
+      {
+        "contact_id": "c-tony",
+        "spoke_with": false
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Tony",
+      "lunch",
+      "3",
+      "woman"
+    ],
+    "summary_must_not_mention": []
+  }
+}

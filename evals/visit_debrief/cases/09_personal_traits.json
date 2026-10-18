@@ -1,0 +1,42 @@
+{
+  "name": "The note describes the owner's age and accent",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Rosa's Bakery",
+      "industry": "Restaurants",
+      "businessType": "Bakery",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "talked to the owner, older lady with a thick accent, named rosa. she said they already have a video guy who does their reels and she's happy with him. not interested."
+  },
+  "expected": {
+    "outcome": [
+      "HAS_PROVIDER"
+    ],
+    "provider_type": [
+      "VIDEO"
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Rosa",
+        "spoke_with": true,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Rosa",
+      "reels|video"
+    ],
+    "summary_must_not_mention": [
+      "older",
+      "accent"
+    ]
+  }
+}

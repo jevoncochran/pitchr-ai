@@ -47,6 +47,7 @@ The API runs at http://localhost:8000. Interactive API docs are at http://localh
 | --- | --- | --- |
 | `GET` | `/health` | Returns `{"status": "ok"}` when the service is running |
 | `POST` | `/leads/snapshot` | Short AI summary of a lead's current state and how to approach them. Requires the `X-Internal-Api-Key` header. |
+| `POST` | `/visits/debrief` | Turns a note dictated after an in-person visit into a proposal for the visit form (outcome, provider, come-back date, people, summary). Requires the `X-Internal-Api-Key` header. |
 | `POST` | `/business-cards/scan` | Reads a photo uploaded to a lead: whether it's a business card, what it says, and which contact it belongs to. Requires the `X-Internal-Api-Key` header. |
 
 ## Docs
@@ -83,8 +84,9 @@ pitchr-ai/
 │       │   ├── facts.py        # Facts computed in code (no AI)
 │       │   ├── prompt.py       # System prompt and how lead data is laid out for Claude
 │       │   └── service.py      # Ties it together: facts + Claude's analysis
-│       └── business_card_scan/ # POST /business-cards/scan: reads business card photos
-├── tests/                      # Mirrors app/features/: tests/core/, tests/lead_snapshot/, tests/business_card_scan/
+│       ├── business_card_scan/ # POST /business-cards/scan: reads business card photos
+│       └── visit_debrief/      # POST /visits/debrief: a dictated visit note → the visit form
+├── tests/                      # Mirrors app/features/: tests/core/, tests/lead_snapshot/, tests/business_card_scan/, tests/visit_debrief/
 ├── evals/                      # Real-Claude quality checks, one folder per feature
 ├── docs/                       # Feature specs and build plans
 ├── pyproject.toml              # Project settings and dependencies

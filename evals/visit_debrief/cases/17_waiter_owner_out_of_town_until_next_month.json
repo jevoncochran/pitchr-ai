@@ -1,0 +1,46 @@
+{
+  "name": "Owner's cases: Harry (maybe a waiter) says the owner is away until next month and would be interested",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Saffron Indian Bistro",
+      "industry": "Restaurants",
+      "businessType": "Restaurant",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "I spoke with Harry. I think he is a waiter but I am not sure. He told the owner Vivek was out of town until next month. But Harry thinks the owner would be interested."
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-11-02",
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Harry",
+        "spoke_with": true
+      },
+      {
+        "first_name": "Vivek",
+        "spoke_with": false,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Harry",
+      "Vivek",
+      "next month|November",
+      "interested"
+    ],
+    "summary_must_not_mention": [],
+    "estimated": true
+  }
+}

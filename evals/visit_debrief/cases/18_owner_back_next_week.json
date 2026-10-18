@@ -1,0 +1,39 @@
+{
+  "name": "Owner's test session: the owner is back in the office next week",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Coastal Physical Therapy",
+      "industry": "Medical",
+      "businessType": "Physical therapy",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "spoke with the receptionist, she said the owner will be back in the office next week. left a card"
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-19",
+    "come_back_time": null,
+    "estimated": true,
+    "left_materials": true,
+    "people": [
+      {
+        "title": "receptionist",
+        "spoke_with": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "receptionist",
+      "next week"
+    ],
+    "summary_must_not_mention": []
+  }
+}

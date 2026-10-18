@@ -5,6 +5,7 @@ from fastapi import Depends, FastAPI
 from app.core.security import require_api_key
 from app.features.business_card_scan.router import router as business_card_scan_router
 from app.features.lead_snapshot.router import router as lead_snapshot_router
+from app.features.visit_debrief.router import router as visit_debrief_router
 
 # Libraries only log warnings and errors; our own code (the "pitchr_ai" loggers,
 # e.g. one line per Claude call) also logs info.
@@ -19,6 +20,7 @@ logging.getLogger("pitchr_ai").setLevel(logging.INFO)
 app = FastAPI(title="Pitchr AI", dependencies=[Depends(require_api_key)])
 app.include_router(lead_snapshot_router)
 app.include_router(business_card_scan_router)
+app.include_router(visit_debrief_router)
 
 
 @app.get("/health")

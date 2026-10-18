@@ -1,0 +1,47 @@
+{
+  "name": "Dictation mistakes, owner does her own marketing, vague timing",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Patel Family Dentistry",
+      "industry": "Medical",
+      "businessType": "Dentist",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "spoke to brianna at the front desk she said doctor patel does all the marketing herself on insta um not really interested right now maybe after the holidays. she sad she'd pass along my card"
+  },
+  "expected": {
+    "outcome": [
+      "NOT_INTERESTED",
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": null,
+    "come_back_date": "2027-01-04",
+    "come_back_time": null,
+    "left_materials": true,
+    "people": [
+      {
+        "first_name": "Brianna",
+        "spoke_with": true
+      },
+      {
+        "last_name": "Patel",
+        "spoke_with": false,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Brianna",
+      "Patel",
+      "Instagram|insta",
+      "after the holidays"
+    ],
+    "summary_must_not_mention": [
+      " sad "
+    ],
+    "estimated": true
+  }
+}

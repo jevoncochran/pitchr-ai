@@ -1,0 +1,40 @@
+{
+  "name": "A day said exactly, with a part of the day",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Bella Salon",
+      "industry": "Aesthetics",
+      "businessType": "Hair salon",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "talked to the owner nicole, she's interested but slammed today, said come back monday morning"
+  },
+  "expected": {
+    "outcome": [
+      "INTERESTED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-19",
+    "come_back_time": "09:00",
+    "estimated": true,
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Nicole",
+        "spoke_with": true,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Nicole",
+      "Monday morning"
+    ],
+    "summary_must_not_mention": []
+  }
+}
