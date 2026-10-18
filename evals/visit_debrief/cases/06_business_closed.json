@@ -1,0 +1,33 @@
+{
+  "name": "Closed, flyer under the door",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Tacos El Rey",
+      "industry": "Restaurants",
+      "businessType": "Restaurant",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "place was closed, sign on the door says closed fridays. slid a flyer under the door"
+  },
+  "expected": {
+    "outcome": [
+      "BUSINESS_CLOSED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": true,
+    "people": [],
+    "asks": false,
+    "summary_must_mention": [
+      "closed",
+      "flyer"
+    ],
+    "summary_must_not_mention": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Two Marias on file, a month to come back",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Bloom Aesthetics",
+      "industry": "Aesthetics",
+      "businessType": "Med spa",
+      "pipelineStage": "CONTACTED"
+    },
+    "contacts": [
+      {
+        "id": "c-maria-l",
+        "firstName": "Maria",
+        "lastName": "Lopez",
+        "title": "Owner",
+        "isDecisionMaker": true
+      },
+      {
+        "id": "c-maria-g",
+        "firstName": "Maria",
+        "lastName": "Gomez",
+        "title": "Office manager",
+        "isDecisionMaker": false
+      }
+    ],
+    "recentTouchpoints": [],
+    "note": "spoke with maria she said they're not doing any marketing right now because they're renovating the space, check back in january"
+  },
+  "expected": {
+    "outcome": [
+      "NOT_INTERESTED",
+      "COME_BACK_LATER"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2027-01-04",
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "candidates": [
+          "c-maria-g",
+          "c-maria-l"
+        ],
+        "spoke_with": true
+      }
+    ],
+    "asks": true,
+    "summary_must_mention": [
+      "renovat",
+      "January"
+    ],
+    "summary_must_not_mention": [],
+    "estimated": true
+  }
+}

@@ -26,6 +26,11 @@ class Settings(BaseSettings):
     # eval decides whether a smaller model is enough.
     business_card_scan_model: str | None = None
 
+    # Optional. Reads VISIT_DEBRIEF_MODEL: the model that turns a dictated visit
+    # note into the visit form (pitchr-server docs/visit-debrief.md). Haiku 5.5
+    # passed all 183 checks of the visit debrief eval at about 0.1¢ a note.
+    visit_debrief_model: str = "claude-haiku-5-5"
+
 
 @lru_cache
 def get_settings() -> Settings:

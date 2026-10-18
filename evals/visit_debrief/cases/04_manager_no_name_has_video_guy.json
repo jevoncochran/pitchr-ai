@@ -1,0 +1,39 @@
+{
+  "name": "A manager with no name, an in-house videographer",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Iron Peak Roofing",
+      "industry": "Construction",
+      "businessType": "Roofer",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "the manager was there and I talked to him for a few minutes, he said they film everything in house with their own guy and they're happy with it"
+  },
+  "expected": {
+    "outcome": [
+      "HAS_PROVIDER"
+    ],
+    "provider_type": [
+      "VIDEO"
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "title": "manager",
+        "spoke_with": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "manager",
+      "in-house|in house",
+      "happy"
+    ],
+    "summary_must_not_mention": []
+  }
+}

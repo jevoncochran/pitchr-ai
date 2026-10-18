@@ -1,0 +1,59 @@
+{
+  "name": "Gatekeeper, owner on file and only in on Thursdays, agency for social",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Lopez Med Spa",
+      "industry": "Aesthetics",
+      "businessType": "Med spa",
+      "pipelineStage": "CONTACTED"
+    },
+    "contacts": [
+      {
+        "id": "c-maria",
+        "firstName": "María",
+        "lastName": "López",
+        "title": "Owner",
+        "isDecisionMaker": true
+      }
+    ],
+    "recentTouchpoints": [
+      {
+        "date": "2026-10-01T15:00:00Z",
+        "type": "IN_PERSON",
+        "summary": "Owner wasn't in. Left a card with the front desk."
+      }
+    ],
+    "note": "so I spoke with Jen at the front desk she was really nice um the owner is Maria she's only in on Thursdays. They use an agency for their social media but nothing for video. I left a card and she said to come back next Thursday"
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      "MARKETING_AGENCY"
+    ],
+    "come_back_date": "2026-10-22",
+    "come_back_time": null,
+    "left_materials": true,
+    "people": [
+      {
+        "first_name": "Jen",
+        "spoke_with": true
+      },
+      {
+        "contact_id": "c-maria",
+        "spoke_with": false
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Jen",
+      "Thursday",
+      "agency",
+      "video"
+    ],
+    "summary_must_not_mention": [],
+    "estimated": false
+  }
+}

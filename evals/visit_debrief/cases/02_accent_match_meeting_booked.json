@@ -1,0 +1,49 @@
+{
+  "name": "Owner on file without accents in the note, meeting booked with a time",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Lopez Med Spa",
+      "industry": "Aesthetics",
+      "businessType": "Med spa",
+      "pipelineStage": "CONTACTED"
+    },
+    "contacts": [
+      {
+        "id": "c-maria",
+        "firstName": "María",
+        "lastName": "López",
+        "title": null,
+        "isDecisionMaker": false
+      }
+    ],
+    "recentTouchpoints": [],
+    "note": "talked to maria she's the owner. she liked the reel and wants to see examples of other med spas we've done. she said come by tuesday at 2 and we'll go over pricing"
+  },
+  "expected": {
+    "outcome": [
+      "MEETING_BOOKED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-20",
+    "come_back_time": "14:00",
+    "left_materials": false,
+    "people": [
+      {
+        "contact_id": "c-maria",
+        "spoke_with": true,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "María",
+      "examples",
+      "pricing",
+      "Tuesday"
+    ],
+    "summary_must_not_mention": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Owner's cases: a front desk person with no name, the owner in tomorrow",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Serenity Day Spa",
+      "industry": "Aesthetics",
+      "businessType": "Day spa",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "Spoke with the girl at the front desk. She said the owner, Lisa, would be in tomorrow. Come back then."
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-17",
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "title": "front desk",
+        "spoke_with": true
+      },
+      {
+        "first_name": "Lisa",
+        "spoke_with": false,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Lisa",
+      "front desk",
+      "tomorrow|10/17|Saturday",
+      "woman"
+    ],
+    "summary_must_not_mention": [],
+    "estimated": false
+  }
+}

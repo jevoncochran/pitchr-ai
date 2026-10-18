@@ -1,0 +1,42 @@
+{
+  "name": "Come back before they close today",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Sunrise Bakery",
+      "industry": "Restaurants",
+      "businessType": "Bakery",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "owner was out on a delivery, the guy at the counter said swing by before they close today and she'll be back"
+  },
+  "expected": {
+    "outcome": [
+      "DECISION_MAKER_NOT_AVAILABLE"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": "2026-10-16",
+    "come_back_time": "16:00",
+    "estimated": true,
+    "left_materials": false,
+    "people": [
+      {
+        "title": "counter",
+        "spoke_with": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "man at the counter|counter",
+      "delivery",
+      "close"
+    ],
+    "summary_must_not_mention": [
+      "guy"
+    ]
+  }
+}

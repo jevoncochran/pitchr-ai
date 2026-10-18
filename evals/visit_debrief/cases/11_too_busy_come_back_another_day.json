@@ -1,0 +1,33 @@
+{
+  "name": "Too busy, no day given, no names",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Glow Nail Bar",
+      "industry": "Aesthetics",
+      "businessType": "Nail salon",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "dropped off a flyer, they were slammed, said come back another day"
+  },
+  "expected": {
+    "outcome": [
+      "COME_BACK_LATER"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": true,
+    "people": [],
+    "asks": false,
+    "summary_must_mention": [
+      "flyer",
+      "busy|slammed"
+    ],
+    "summary_must_not_mention": []
+  }
+}

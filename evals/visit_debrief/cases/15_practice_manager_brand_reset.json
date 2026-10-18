@@ -1,0 +1,41 @@
+{
+  "name": "Owner's cases: a practice manager interested in a brand reset, wants pricing by email",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Bayside Family Medicine",
+      "industry": "Medical",
+      "businessType": "Medical practice",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "I spoke with the practice manager, Maria. She said they are looking to do a brand reset and may be interested. She was on her way out the door so she couldn't talk much. She asked me to email her with information about the services we offer including pricing."
+  },
+  "expected": {
+    "outcome": [
+      "INTERESTED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Maria",
+        "spoke_with": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Maria",
+      "practice manager",
+      "brand",
+      "pricing",
+      "email"
+    ],
+    "summary_must_not_mention": []
+  }
+}

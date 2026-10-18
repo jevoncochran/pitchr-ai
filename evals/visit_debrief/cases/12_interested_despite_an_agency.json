@@ -1,0 +1,41 @@
+{
+  "name": "Owner interested in video even though an agency does their posts; our promise to email",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Joe's Auto Detail",
+      "industry": "Automotive",
+      "businessType": "Detailer",
+      "pipelineStage": "NEW"
+    },
+    "contacts": [],
+    "recentTouchpoints": [],
+    "note": "owner joe said they have an agency doing their posts but they've never done video and he's interested, wants to see pricing. I told him I'd email it over monday"
+  },
+  "expected": {
+    "outcome": [
+      "INTERESTED"
+    ],
+    "provider_type": [
+      "MARKETING_AGENCY"
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "first_name": "Joe",
+        "spoke_with": true,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": false,
+    "summary_must_mention": [
+      "Joe",
+      "agency",
+      "pricing",
+      "Monday"
+    ],
+    "summary_must_not_mention": []
+  }
+}

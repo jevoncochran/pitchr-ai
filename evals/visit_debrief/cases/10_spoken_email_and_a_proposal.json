@@ -1,0 +1,53 @@
+{
+  "name": "Interested marketing coordinator, a spoken email, the owner signs off",
+  "request": {
+    "today": "2026-10-16",
+    "lead": {
+      "business": "Bright Smile Dental",
+      "industry": "Medical",
+      "businessType": "Dentist",
+      "pipelineStage": "CONTACTED"
+    },
+    "contacts": [
+      {
+        "id": "c-sam",
+        "firstName": "Sam",
+        "lastName": "Ortiz",
+        "title": "Marketing coordinator",
+        "isDecisionMaker": false
+      }
+    ],
+    "recentTouchpoints": [],
+    "note": "met sam the marketing coordinator, he's interested and wants a proposal for a couple of short videos for their new location, he gave me his email sam at brightsmile dental dot com. the owner dr. lee signs off on budget"
+  },
+  "expected": {
+    "outcome": [
+      "INTERESTED"
+    ],
+    "provider_type": [
+      null
+    ],
+    "come_back_date": null,
+    "come_back_time": null,
+    "left_materials": false,
+    "people": [
+      {
+        "contact_id": "c-sam",
+        "spoke_with": true
+      },
+      {
+        "last_name": "Lee",
+        "spoke_with": false,
+        "is_decision_maker": true
+      }
+    ],
+    "asks": true,
+    "summary_must_mention": [
+      "Sam",
+      "proposal",
+      "Lee",
+      "new location"
+    ],
+    "summary_must_not_mention": []
+  }
+}
